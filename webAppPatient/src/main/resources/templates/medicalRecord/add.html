@@ -1,0 +1,83 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/mystyle.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<title>Add Medical Record</title>
+</head>
+
+<body>
+
+	<header>
+		<div class="header_part1">
+			<div>
+				<a class="btn btn-ok" href="/home">MEDISCREEN</a>
+			</div>
+			<div class="header_logoff">
+				<div class="nav">
+					<ul class="nav nav-tabs card-header-tabs">
+						<li><a class="nav-link" href="/home" aria-current="true">Home</a></li>
+						<li><a class="nav-link" href="/infoPatients">Patient Information</a></li>
+						<li><a class="nav-link" href="/medicalRecords">Patient Medical Record</a></li>
+						<li><a class="nav-link" href="/addInfoPatient">Add Patient</a></li>
+						<li><a class="nav-link active" href="/addMedicalRecord">Add MedicalRecord</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	
+	</header>
+
+	<div class="container">
+
+		<h3 class="h3">ADD MEDICAL RECORD</h3>
+
+		<a th:href="@{/addMedicalRecord}">
+			<div data-th-if="${idPatientCheckedInDB} != null"
+				class="alert alert-danger" role="alert">
+				<p>
+					<strong>ATTENTION :</strong>
+				</p>
+				<span data-th-text="${idPatientCheckedInDB}"> </span>
+			</div>
+		</a>
+
+	<div class="container pt-5">
+		<div class="row justify-content-md-center">
+			<div class="col-md-4 py-4 mx-3 border">
+
+				<section> 
+					<form th:action="@{/addMedicalRecord}" th:object="${medicalRecordForm}"  
+						method="post" class="my-3"> 
+						<p>
+							<span data-th-if="${exIdPatient}" style="color: red"> <span
+								th:text="${exIdPatient}"> </span></span>
+						</p>
+						<input type="text" name="idPatient" th:field="*{idPatient}" class="form-control" placeholder=" ID Patient" required /> </br>
+						<p>
+							<span data-th-if="${exNotes}" style="color: red"> <span
+								th:text="${exNotes}"> </span></span>
+						</p>
+						<input type="text" name="notes" th:field="*{notes}" class="form-control" placeholder="Notes" required /> </br> 
+
+						<div class="center">
+							<button type="submit" class="btn btn-ok">ADD NOTES</button>
+						</div>
+
+					</form>
+				</section>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+
+</html>

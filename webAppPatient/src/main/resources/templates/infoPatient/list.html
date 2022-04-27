@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+
+<link rel="stylesheet" href="css/mystyle.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+
+<title> Show All Patient Information</title>
+
+</head>
+
+<body>
+
+	<header>
+		<div class="header_part1">
+			<div>
+				<a class="btn btn-ok" href="/home">MEDISCREEN</a>
+			</div>
+			<div class="header_logoff">
+				<div class="nav">
+					<ul class="nav nav-tabs card-header-tabs">
+						<li><a class="nav-link" href="/home" aria-current="true">Home</a></li>
+						<li><a class="nav-link active" href="/infoPatients">Patient Information</a></li>
+						<li><a class="nav-link" href="/medicalRecords">Patient Medical Record</a></li>
+						<li><a class="nav-link" href="/addInfoPatient">Add Patient</a></li>
+						<li><a class="nav-link" href="/addMedicalRecord">Add MedicalRecord</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	
+	</header>
+
+
+	<div class="container">
+
+		<h3 class="h3">PATIENT INFORMATION</h3>
+		<a href="/infoPatients">
+			<div data-th-if="${infoPatientCreated} != null"
+				class="alert alert-success" role="alert">
+				<p>
+					<strong>RECORDING COMPLETED</strong>
+				</p>
+				<span data-th-text="${infoPatientCreated}"> </span>
+			</div>
+		</a>
+		<a href="/infoPatients">
+			<div data-th-if="${infoPatientDeleted} != null"
+				class="alert alert-danger" role="alert">
+				<p>
+					<strong>DELETION SUCCESSFUL</strong>
+				</p>
+				<span data-th-text="${infoPatientDeleted}"></span>
+			</div>
+		</a> 
+
+		<div class="table-responsive">
+
+			<table class="table">
+
+				<thead >
+					<tr>
+
+						<th><a href="/addInfoPatient"><button class="btn btn-ok">Add
+									Patient</button> </a></th>
+					</tr>
+				</thead>
+
+			
+			</table>
+
+			<p>
+				<strong>OVERVIEW</strong>
+			</p>
+			<div id="transaction_border">
+				<table class="table table-striped table-sm">
+					<thead class="title_transfer">
+						<tr>
+							<th>ID PATIENT</th>
+							<th>LASTNAME</th>
+							<th>FIRSTNAME</th>
+							<th>RISK LEVEL</th>
+							<th>ACTION</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-th-if="${patients.empty}">
+							<td colspan=5>No patient added to the database.</td>
+						</tr>
+						<tr data-th-each="patient:${patients}">
+							<td><span data-th-text="${patient.id}"> </span></td>
+							<td><span data-th-text="${patient.family}"> </span></td>
+							<td><span data-th-text="${patient.given}"> </span></td>
+							<td><span data-th-text="${patient.riskLevel}"> </span></td>
+							<td><a th:href="@{/infoPatient(id=${patient.id})}"> <button type="submit" class="btn btn-ok">SHOW</button></span></a>
+							<a th:href="@{/getMedicalRecordByPatient(id=${patient.id})}"> <button type="submit" class="btn btn-ok">MEDICAL RECORDS</button></span></a>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+
+		</div>
+	</div>
+
+</body>
+
+</html>

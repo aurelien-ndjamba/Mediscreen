@@ -1,0 +1,102 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/mystyle.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<!-- <link -->
+<!-- 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" -->
+<!-- 	rel="stylesheet" -->
+<!-- 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" -->
+<!-- 	crossorigin="anonymous"> -->
+
+<title>Add Patient Information</title>
+</head>
+
+<body>
+
+	<header>
+		<div class="header_part1">
+			<div>
+				<a class="btn btn-ok" href="/home">MEDISCREEN</a>
+			</div>
+			<div class="header_logoff">
+				<div class="nav">
+					<ul class="nav nav-tabs card-header-tabs">
+						<li><a class="nav-link" href="/home" aria-current="true">Home</a></li>
+						<li><a class="nav-link" href="/infoPatients">Patient Information</a></li>
+						<li><a class="nav-link" href="/medicalRecords">Patient Medical Record</a></li>
+						<li><a class="nav-link active" href="/addInfoPatient">Add Patient</a></li>
+						<li><a class="nav-link" href="/addMedicalRecord">Add MedicalRecord</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	
+	</header>
+
+	<div class="container">
+
+		<h3 class="h3">ADD PATIENT</h3>
+	<div class="container pt-5">
+		<div class="row justify-content-md-center">
+			<div class="col-md-4 py-4 mx-3 border">
+
+				<section>
+					<form th:action="@{/addInfoPatient}" th:object="${infoPatientForm}" method="post" class="my-3">
+
+						<p>
+							<span data-th-if="${exFamily}" style="color: red"> <span
+								th:text="${exFamily}"> </span></span>
+						</p>
+						<input type="family" name="family" th:field="*{family}" class="form-control" placeholder="Lastname" required /> </br> 
+						<p>
+							<span data-th-if="${exGiven}" style="color: red"> <span
+								th:text="${exGiven}"> </span></span>
+						</p>
+						<input type="text" name="given" th:field="*{given}" class="form-control" placeholder="Firstname" required /> </br> 
+						<p>
+							<span data-th-if="${exDob}" style="color: red"> <span
+								th:text="${exDob}"> </span></span>
+						</p>
+						<input type="date" name="dob" th:field="*{dob}" class="form-control" placeholder="Date of Birth" required /> </br> 
+
+						<p>
+							<span data-th-if="${exGender}" style="color: red"> <span
+								th:text="${exGender}"> </span></span>
+						</p>
+						<select id="type" th:field="*{sex}"
+						class="form-control">
+							<option th:each="sex:${gender}" th:value="${sex}"
+								th:text="${sex}"></option>
+						</select> </br>
+						
+						<p>
+							<span data-th-if="${exAddress}" style="color: red"> <span
+								th:text="${exAddress}"> </span></span>
+						</p>		
+						<input type="text" name="address" placeholder="Address" th:field="*{address}" class="form-control" min="3" max="60" /> </br> 
+						<p>
+							<span data-th-if="${exPhone}" style="color: red"> <span
+								th:text="${exPhone}"> </span></span>
+						</p>
+						<input type="text" name="phone" placeholder="Phone" th:field="*{phone}" class="form-control" min="3" max="30" /> </br> 
+
+						<div class="center">
+							<button type="submit" class="btn btn-ok">ADD PATIENT</button>
+						</div>
+
+					</form>
+				</section>
+
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+
+</html>

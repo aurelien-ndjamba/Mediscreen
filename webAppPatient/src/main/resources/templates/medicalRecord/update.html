@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+
+<link rel="stylesheet" href="css/mystyle.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+
+<title>Show Patient Medical Record</title>
+
+</head>
+
+<body>
+
+	<header>
+		<div class="header_part1">
+			<div>
+				<a class="btn btn-ok" href="/home">MEDISCREEN</a>
+			</div>
+			<div class="header_logoff">
+				<div class="nav">
+					<ul class="nav nav-tabs card-header-tabs">
+						<li><a class="nav-link" href="/home">Home</a></li>
+						<li><a class="nav-link" href="/infoPatients">Patient Informations</a></li>
+						<li><a class="nav-link" href="/medicalRecords">Patient Medical Records</a></li>
+						<li><a class="nav-link" href="/addInfoPatient">Add Patient</a></li>
+						<li><a class="nav-link" href="/addMedicalRecord">Add MedicalRecord</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="container">
+
+		<h3 class="h3">SHOW MEDICAL RECORD </h3>
+
+		<a th:href="@{/getMedicalRecordById(id=${id})}">
+			<div data-th-if="${medicalRecordUpdated} != null"
+				class="alert alert-success" role="alert">
+				<p>
+					<strong>SUCCESSFUL UPDATE</strong>
+				</p>
+			</div>
+		</a>
+
+		<div class="table-responsive">
+
+			<p>
+				<strong>
+					<span data-th-if="${idMedicalRecord} != null">
+						<span data-th-text="${idMedicalRecord}"></span>
+					</span>
+				</strong>
+			</p>
+
+			<div id="transaction_border">
+				<form th:action="@{/updateMedicalRecordById(id=${id})}" th:object="${medicalRecordForm}"
+						method="post" class="my-3">
+					<table class="table table-striped table-sm">
+						<thead class="title_transfer">
+							<tr>
+								<th>FIELDS</th>
+								<th>VALUES</th> 
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr>
+								<td><strong>DATE :</strong></td>
+								<td><span data-th-text="${#calendars.format(medicalRecord.date,'yyyy-MM-dd HH:mm')}"></span></td>
+							</tr>
+							<tr>
+								<td><strong>ID PATIENT :</strong></td>
+								<td><span data-th-text="${medicalRecord.idPatient}"></span></td>
+							</tr>
+							<tr>
+								<td><strong>NOTES :</strong></td>
+								<td>
+									<span data-th-text="${medicalRecord.notes}"></span>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>UPDATE NOTES :</strong></td>
+								<td>
+									<input type="text" name="notes" th:field="*{notes}" class="form-control" placeholder="New Notes" required />
+								</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>
+									<button type="submit" class="btn btn-ok">UPDATE</button>
+									<a th:href="@{/medicalRecords}" class="btn btn-primary"> CANCEL</a>
+									<a th:href="@{/deleteMedicalRecordById(id=${id})}" class="btn btn-danger">DELETE</a>
+								</td> 
+							</tr>
+
+						</tbody>
+					</table>
+				</form>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+
+<link rel="stylesheet" href="css/mystyle.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+
+<title>Show Patient Information</title>
+
+</head>
+
+<body>
+
+	<header>
+		<div class="header_part1">
+			<div>
+				<a class="btn btn-ok" href="/home">MEDISCREEN</a>
+			</div>
+			<div class="header_logoff">
+				<div class="nav">
+					<ul class="nav nav-tabs card-header-tabs">
+						<li><a class="nav-link" href="/home">Home</a></li>
+						<li><a class="nav-link" href="/infoPatients">Patient Information</a></li>
+						<li><a class="nav-link" href="/medicalRecords">Patient Medical Record</a></li>
+						<li><a class="nav-link" href="/addInfoPatient">Add Patient</a></li>
+						<li><a class="nav-link" href="/addMedicalRecord">Add MedicalRecord</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="container">
+
+		<h3 class="h3">SHOW INFORMATION</h3>
+
+		<a th:href="@{/infoPatient(id=${infoPatient.id})}">
+			<div data-th-if="${infoPatientUpdated} != null"
+				class="alert alert-success" role="alert">
+				<p>
+					<strong>SUCCESSFUL UPDATE</strong>
+				</p>
+			</div>
+		</a>
+ 
+		<div class="table-responsive">
+
+			<p>
+				<strong>
+					<span data-th-if="${infoPatientfilteredByIdPatient} != null">
+						<span data-th-text="${infoPatientfilteredByIdPatient}"></span>
+					</span>
+				</strong>
+			</p>
+			<div id="transaction_border">
+				<form th:action="@{/updateInfoPatient(id=${infoPatient.id})}" th:object="${infoPatientForm}"
+						method="post" class="my-3">
+					<table class="table table-striped table-sm">
+						<thead class="title_transfer">
+							<tr>
+								<th>FIELDS</th> 
+								<th>VALUES</th>
+								<th>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr>
+								<td><strong>LASTNAME :</strong></td>
+								<td><span data-th-text="${infoPatient.family}"></span></td>
+								<td>
+									
+										<span data-th-if="${exFamily}" style="color: red"> <span
+											th:text="${exFamily}"> </span></span>
+									
+									<input type="text" name="family" th:field="*{family}" class="form-control" placeholder="New Lastname" required />
+								</td>
+							</tr>
+							<tr>
+								<td><strong>FIRSTNAME :</strong></td>
+								<td><span data-th-text="${infoPatient.given}"></span></td>
+								<td>
+									<span data-th-if="${exGiven}" style="color: red"> <span
+										th:text="${exGiven}"> </span></span>
+									<input type="text" name="given" th:field="*{given}" class="form-control" placeholder="New Firstname" required /></td>
+							</tr>
+							<tr>
+								<td><strong>DATE OF BIRTH :</strong></td>
+								<td><span data-th-text="${#calendars.format(infoPatient.dob,'yyyy-MM-dd')}"></span></td>
+								<td>
+									<span data-th-if="${exDob}" style="color: red"> <span
+										th:text="${exDob}"> </span></span>
+									<input type="date" name="dob" th:field="*{dob}" class="form-control" placeholder="New Date of Birth" required /> </td>
+							</tr>
+							<tr>
+								<td><strong>GENDER :</strong></td>
+								<td><span data-th-text="${infoPatient.sex}"></span></td>
+								<td>
+									<span data-th-if="${exGender}" style="color: red"> <span
+										th:text="${exGender}"> </span></span>
+									<select id="type" th:field="*{sex}"
+									class="form-control">
+									<option th:each="sex:${gender}" th:value="${sex}"
+									th:text="${sex}"></option>
+								</select> </br>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>ADDRESS :</strong></td>
+								<td><span data-th-text="${infoPatient.address}"></span></td>
+								<td>
+									<span data-th-if="${exAddress}" style="color: red"> <span
+										th:text="${exAddress}"> </span></span>
+									<input type="text" name="address" th:field="*{address}" class="form-control" placeholder="New Address" /></td>
+							</tr>
+							<tr>
+								<td><strong>PHONE :</strong></td>
+								<td><span data-th-text="${infoPatient.phone}"></span></td>
+								<td>
+									<span data-th-if="${exPhone}" style="color: red"> <span
+										th:text="${exPhone}"> </span></span>
+									<input type="text" name="phone" th:field="*{phone}" class="form-control" placeholder="New Phone" /></td>
+							</tr>
+							<tr>
+								<td><strong>RISK LEVEL :</strong></td>
+								<td><span data-th-text="${infoPatient.riskLevel}"></span></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td>
+									<button type="submit" class="btn btn-ok">UPDATE</button>
+									<a th:href="@{/infoPatients}" class="btn btn-primary"> CANCEL</a>
+									<a th:href="@{/deleteInfoPatient(idPatient=${infoPatient.id})}" class="btn btn-danger">DELETE</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+
+</html>
