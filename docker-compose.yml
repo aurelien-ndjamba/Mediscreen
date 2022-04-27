@@ -1,0 +1,90 @@
+version: '3'
+services:
+  POSTGRESDB:
+    image: postgres:latest
+    #hostname: localhost
+    container_name: postgresdb
+    #network_mode: bridge
+    ports: 
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=mediscreen
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=C@meroun7
+    volumes: 
+      - /var/lib/postgres
+      - ./dbscripts/postgres:/docker-entrypoint-initdb.d
+    restart: always
+
+  INFOPATIENT:
+    depends_on:
+      - POSTGRESDB
+    image: infopatient
+    container_name: infopatient
+    ports: 
+      - "9002:9002"
+    environment:
+      - spring.datasource.url=jdbc:postgresql://postgresdb:5432/mediscreen
+    volumes: 
+      - /app/logs/infopatient
+    restart: always
+
+  MONGODB:
+    image: mongo:latest
+    container_name: mongodb
+    ports: 
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_DB=histories
+      #- MONGO_INITDB_ROOT_USERNAME=root
+      #- MONGO_INITDB_ROOT_PASSWORD=pass1234
+    volumes: 
+      #- mongodb-data:/data/db
+      - /data/db
+    restart: always
+
+  MEDICALRECORD:
+    depends_on:
+        - MONGODB
+    image: medicalrecordpatient
+    container_name: medicalrecordpatient
+    ports: 
+      - "9003:9003"
+    environment:
+      - spring.data.mongodb.host=mongodb
+    volumes: 
+      - /app/logs/medicalrecordpatient
+    restart: always
+
+  RISKLEVEL:
+    depends_on:
+        - INFOPATIENT
+        - MEDICALRECORD
+    image: risklevelpatient
+    container_name: risklevelpatient
+    ports: 
+      - "9004:9004"
+    environment:
+      - com.mediscreen.apiUrlInfoPatient=http://infopatient:9002
+      - com.mediscreen.apiUrlMedicalRecordPatient=http://medicalrecordpatient:9003
+      - com.mediscreen.pathTriggers=triggers.txt
+    volumes: 
+      - /app/logs/risklevelpatient
+    restart: always
+
+  WEBAPP:
+    depends_on:
+      - INFOPATIENT
+      - MEDICALRECORD
+      - RISKLEVEL
+    image: webapp
+    container_name: webapp
+    ports: 
+      - "9001:9001"
+    environment:
+      - com.mediscreen.apiUrlInfoPatient=http://infopatient:9002
+      - com.mediscreen.apiUrlMedicalRecordPatient=http://medicalrecordpatient:9003
+      - com.mediscreen.apiUrlRiskLevelPatient=http://risklevelpatient:9004
+    volumes: 
+      - /app/logs/webapp
+    restart: always
