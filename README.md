@@ -10,7 +10,7 @@ Web application to save patient information, consult it, modify it if necessary.
 - Créer un répertoire de travail "Workdir" par exemple -> mkdir Workdir
 - Se placer dans ce répertoire -> cd Workdir
 - Initialiser un depot local git -> git init
-- Cloner la branche Release dans ce dossier -> git clone https://github.com/aurelien-ndjamba/TourGuide.git
+- Cloner la branche Release dans ce dossier -> git clone https://github.com/aurelien-ndjamba/Mediscreen.git
 
 ## Démarrage:
 1. Packager le microservice gpsutil: 
