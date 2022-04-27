@@ -4,7 +4,7 @@
 ![uses-eclipse-ide (1)](https://user-images.githubusercontent.com/66125882/150993531-3f8d450c-0399-4c9f-920c-4296d0473f2d.svg)
 
 # Mediscreen
-![Alt text](Mediscreen/webAppPatient/src/main/resources/static/image/pmb.PNG?raw=true "Title")
+![Alt text](webAppPatient/src/main/resources/static/image/pmb.PNG?raw=true "Title")
 Web application to save patient information, consult it, modify it if necessary. Then add the patients' medical records and finally obtain the patients' level of diabetes risk based on criteria determined by medical experts.
 
 ## Pour commencer:
