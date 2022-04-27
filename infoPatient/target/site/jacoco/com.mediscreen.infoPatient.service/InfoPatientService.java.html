@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InfoPatientService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">infoPatient</a> &gt; <a href="index.source.html" class="el_package">com.mediscreen.infoPatient.service</a> &gt; <span class="el_source">InfoPatientService.java</span></div><h1>InfoPatientService.java</h1><pre class="source lang-java linenums">package com.mediscreen.infoPatient.service;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.mediscreen.infoPatient.exception.BadRequestBodyException;
+import com.mediscreen.infoPatient.exception.IdInfoPatientNotFoundException;
+import com.mediscreen.infoPatient.model.InfoPatient;
+import com.mediscreen.infoPatient.repository.InfoPatientRepository;
+
+import lombok.Getter;
+import lombok.Setter;
+
+/**
+ * Service InfoPatientService
+ * 
+ * @author Aurelien NDJAMBA
+ * @version 0.0.1
+ */
+@Service
+@Getter
+<span class="fc" id="L27">@Setter</span>
+<span class="fc" id="L28">public class InfoPatientService {</span>
+
+	@Autowired
+<span class="nc" id="L31">	private InfoPatientRepository infoPatientRepository;</span>
+
+	public Optional&lt;InfoPatient&gt; findById(UUID id) {
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">		if (! infoPatientRepository.findById(id).isPresent())  </span>
+<span class="nc" id="L35">			throw new IdInfoPatientNotFoundException(&quot;Information Patient Id :&quot; + id + &quot; is not found in database.&quot;);</span>
+<span class="fc" id="L36">		return infoPatientRepository.findById(id);</span>
+	}
+
+	public List&lt;InfoPatient&gt; findAll() {
+<span class="fc" id="L40">		return infoPatientRepository.findAll();</span>
+	}
+
+	public InfoPatient save(InfoPatient infoPatient) {
+<span class="pc bpc" id="L44" title="3 of 6 branches missed.">		if ((infoPatient.getFamily() == null || infoPatient.getFamily().length() &gt; 30 || infoPatient.getFamily().length() &lt; 1 )</span>
+<span class="pc bpc" id="L45" title="3 of 6 branches missed.">				|| (infoPatient.getGiven() == null || infoPatient.getGiven().length() &gt; 30 || infoPatient.getGiven().length() &lt; 1)</span>
+<span class="pc bpc" id="L46" title="2 of 4 branches missed.">				|| (infoPatient.getDob() == null || infoPatient.getDob().after(new Date()))</span>
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">				|| infoPatient.getAddress().length() &gt; 60</span>
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">				|| infoPatient.getPhone().length() &gt; 30</span>
+<span class="pc bpc" id="L49" title="2 of 4 branches missed.">				|| (infoPatient.getSex() != 'F' &amp;&amp; infoPatient.getSex() != 'M')</span>
+				)
+<span class="nc" id="L51">			throw new BadRequestBodyException(&quot;Check @RequestBody InfoPatient&quot;);</span>
+<span class="fc" id="L52">		return infoPatientRepository.save(infoPatient);</span>
+	}
+
+	public Optional&lt;InfoPatient&gt; deleteById(UUID id) {
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">		if (! infoPatientRepository.findById(id).isPresent())</span>
+<span class="nc" id="L57">			throw new IdInfoPatientNotFoundException(&quot;Information Patient Id : &quot; + id + &quot; is not found in database.&quot;);</span>
+<span class="fc" id="L58">		Optional&lt;InfoPatient&gt; result = findById(id);</span>
+<span class="fc" id="L59">		infoPatientRepository.deleteById(id);</span>
+<span class="fc" id="L60">		return result;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

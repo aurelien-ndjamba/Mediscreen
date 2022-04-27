@@ -1,0 +1,7 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+infoPatient,com.mediscreen.infoPatient,InfoPatientApplication,5,3,0,0,2,1,1,1,1,1
+infoPatient,com.mediscreen.infoPatient.controller,InfoPatientController,0,43,0,0,0,10,0,5,0,5
+infoPatient,com.mediscreen.infoPatient.exception,IdInfoPatientNotFoundException,4,0,0,0,2,0,1,0,1,0
+infoPatient,com.mediscreen.infoPatient.exception,BadRequestBodyException,4,0,0,0,2,0,1,0,1,0
+infoPatient,com.mediscreen.infoPatient.model,InfoPatient,296,49,56,0,9,8,34,14,6,14
+infoPatient,com.mediscreen.infoPatient.service,InfoPatientService,36,98,14,14,4,16,15,6,1,6
