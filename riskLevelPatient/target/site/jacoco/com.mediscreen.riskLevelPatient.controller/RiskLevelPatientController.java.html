@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RiskLevelPatientController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">riskLevelPatient</a> &gt; <a href="index.source.html" class="el_package">com.mediscreen.riskLevelPatient.controller</a> &gt; <span class="el_source">RiskLevelPatientController.java</span></div><h1>RiskLevelPatientController.java</h1><pre class="source lang-java linenums">package com.mediscreen.riskLevelPatient.controller;
+
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.mediscreen.riskLevelPatient.service.RiskLevelPatientService;
+
+/**
+ * RestController RiskLevelPatientController
+ * 
+ * @author Aurelien NDJAMBA
+ * @version 0.0.1
+ */
+@RestController
+<span class="fc" id="L20">public class RiskLevelPatientController {</span>
+
+	@Autowired
+	private RiskLevelPatientService riskLevelPatientService;
+
+	/**
+	 * Méthode pour obtenir le niveau de risque de diabète d'un patient
+	 * 
+	 * @param UUID
+	 * @return String
+	 * 
+	 */
+	@RequestMapping(value = &quot;/assess&quot;, method = RequestMethod.GET)
+	public String findRiskLevelPatient(@RequestParam UUID id) {
+<span class="nc" id="L34">		return riskLevelPatientService.findRiskLevelPatient(id);</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

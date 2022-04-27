@@ -1,0 +1,12 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+riskLevelPatient,com.mediscreen.riskLevelPatient.exception,IdInfoPatientNotFoundException,4,0,0,0,2,0,1,0,1,0
+riskLevelPatient,com.mediscreen.riskLevelPatient.service,RiskLevelPatientService,97,178,39,15,18,44,25,13,2,9
+riskLevelPatient,com.mediscreen.riskLevelPatient.configuration,CustomProperties,151,18,30,0,2,2,21,5,6,5
+riskLevelPatient,com.mediscreen.riskLevelPatient,RiskLevelPatientApplication,5,3,0,0,2,1,1,1,1,1
+riskLevelPatient,com.mediscreen.riskLevelPatient.controller,RiskLevelPatientController,5,3,0,0,1,1,1,1,1,1
+riskLevelPatient,com.mediscreen.riskLevelPatient.model,InfoPatient,305,40,56,0,12,5,37,11,9,11
+riskLevelPatient,com.mediscreen.riskLevelPatient.model,MedicalRecordPatient,253,18,46,0,10,3,34,5,11,5
+riskLevelPatient,com.mediscreen.riskLevelPatient.model,AssessPatient,3,0,0,0,1,0,1,0,1,0
+riskLevelPatient,com.mediscreen.riskLevelPatient.proxy,RiskLevelPatientProxy.new ParameterizedTypeReference() {...},6,0,0,0,1,0,1,0,1,0
+riskLevelPatient,com.mediscreen.riskLevelPatient.proxy,RiskLevelPatientProxy.new ParameterizedTypeReference() {...},6,0,0,0,1,0,1,0,1,0
+riskLevelPatient,com.mediscreen.riskLevelPatient.proxy,RiskLevelPatientProxy,70,3,0,0,10,1,2,1,2,1

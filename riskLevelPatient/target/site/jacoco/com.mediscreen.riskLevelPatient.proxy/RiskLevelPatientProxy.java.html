@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RiskLevelPatientProxy.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">riskLevelPatient</a> &gt; <a href="index.source.html" class="el_package">com.mediscreen.riskLevelPatient.proxy</a> &gt; <span class="el_source">RiskLevelPatientProxy.java</span></div><h1>RiskLevelPatientProxy.java</h1><pre class="source lang-java linenums">package com.mediscreen.riskLevelPatient.proxy;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
+
+import com.mediscreen.riskLevelPatient.configuration.CustomProperties;
+import com.mediscreen.riskLevelPatient.model.MedicalRecordPatient;
+import com.mediscreen.riskLevelPatient.model.InfoPatient;
+
+/**
+ * RiskLevelPatientProxy
+ * 
+ * @author Aurelien NDJAMBA
+ * @version 0.0.1
+ */
+@Component
+<span class="fc" id="L25">public class RiskLevelPatientProxy {</span>
+	
+	@Autowired
+	private CustomProperties props;
+
+	public Optional&lt;InfoPatient&gt; findInfoPatientById(UUID id) {
+<span class="nc" id="L31">		String baseApiUrl = props.getApiUrlInfoPatient();</span>
+<span class="nc" id="L32">		String apiUrl = baseApiUrl + &quot;/patient/findById?id=&quot; + id;</span>
+<span class="nc" id="L33">		RestTemplate restTemplate = new RestTemplate();</span>
+<span class="nc" id="L34">		ResponseEntity&lt;Optional&lt;InfoPatient&gt;&gt; response = restTemplate.exchange(apiUrl, HttpMethod.GET, null, new ParameterizedTypeReference&lt;Optional&lt;InfoPatient&gt;&gt;() {</span>
+		});
+<span class="nc" id="L36">		return response.getBody();</span>
+	}
+
+	public List&lt;MedicalRecordPatient&gt; findMedicalRecordsByIdPatient(UUID id) {
+<span class="nc" id="L40">		String baseApiUrl = props.getApiUrlMedicalRecordPatient();</span>
+<span class="nc" id="L41">		String apiUrl = baseApiUrl + &quot;/patHistory/findByIdPatient?id=&quot; + id;</span>
+<span class="nc" id="L42">		RestTemplate restTemplate = new RestTemplate();</span>
+<span class="nc" id="L43">		ResponseEntity&lt;List&lt;MedicalRecordPatient&gt;&gt; response = restTemplate.exchange(apiUrl, HttpMethod.GET, null, new ParameterizedTypeReference&lt;List&lt;MedicalRecordPatient&gt;&gt;() {</span>
+		});
+<span class="nc" id="L45">		return response.getBody();</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
