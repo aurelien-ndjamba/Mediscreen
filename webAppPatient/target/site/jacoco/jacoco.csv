@@ -1,0 +1,16 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+webAppPatient,com.mediscreen.webApp,WebAppApplication,5,3,0,0,2,1,1,1,1,1
+webAppPatient,com.mediscreen.webApp.controller,WebAppController,775,3,34,0,153,1,36,1,19,1
+webAppPatient,com.mediscreen.webApp.proxy,WebAppProxy.new ParameterizedTypeReference() {...},6,0,0,0,1,0,1,0,1,0
+webAppPatient,com.mediscreen.webApp.proxy,WebAppProxy.new ParameterizedTypeReference() {...},6,0,0,0,1,0,1,0,1,0
+webAppPatient,com.mediscreen.webApp.proxy,WebAppProxy.new ParameterizedTypeReference() {...},6,0,0,0,1,0,1,0,1,0
+webAppPatient,com.mediscreen.webApp.proxy,WebAppProxy.new ParameterizedTypeReference() {...},6,0,0,0,1,0,1,0,1,0
+webAppPatient,com.mediscreen.webApp.proxy,WebAppProxy.new ParameterizedTypeReference() {...},6,0,0,0,1,0,1,0,1,0
+webAppPatient,com.mediscreen.webApp.proxy,WebAppProxy.new ParameterizedTypeReference() {...},6,0,0,0,1,0,1,0,1,0
+webAppPatient,com.mediscreen.webApp.proxy,WebAppProxy.new ParameterizedTypeReference() {...},6,0,0,0,1,0,1,0,1,0
+webAppPatient,com.mediscreen.webApp.proxy,WebAppProxy,381,3,0,0,58,1,11,1,11,1
+webAppPatient,com.mediscreen.webApp.configuration,CustomProperties,154,15,30,0,3,1,22,4,7,4
+webAppPatient,com.mediscreen.webApp.service,WebAppService,3,80,0,0,1,17,1,14,1,14
+webAppPatient,com.mediscreen.webApp.model,MedicalRecordPatient,261,28,46,0,9,5,32,8,9,8
+webAppPatient,com.mediscreen.webApp.model,Gender,15,0,0,0,2,0,1,0,1,0
+webAppPatient,com.mediscreen.webApp.model,InfoPatient,354,34,64,0,15,3,45,9,13,9

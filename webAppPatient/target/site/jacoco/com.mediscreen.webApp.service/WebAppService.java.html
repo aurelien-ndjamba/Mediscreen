@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WebAppService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">webAppPatient</a> &gt; <a href="index.source.html" class="el_package">com.mediscreen.webApp.service</a> &gt; <span class="el_source">WebAppService.java</span></div><h1>WebAppService.java</h1><pre class="source lang-java linenums">package com.mediscreen.webApp.service;
+
+import java.util.Calendar;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.mediscreen.webApp.model.MedicalRecordPatient;
+import com.mediscreen.webApp.proxy.WebAppProxy;
+import com.mediscreen.webApp.model.InfoPatient;
+
+import lombok.Getter;
+import lombok.Setter;
+
+/**
+ * Service WebAppController
+ * 
+ * @author Aurelien NDJAMBA
+ * @version 0.0.1
+ */
+@Service
+@Getter
+<span class="fc" id="L26">@Setter</span>
+<span class="fc" id="L27">public class WebAppService {</span>
+	
+	@Autowired
+<span class="nc" id="L30">	WebAppProxy webAppProxy;</span>
+	
+	public Optional&lt;InfoPatient&gt; findInfoPatientById(UUID id) {
+<span class="fc" id="L33">		return webAppProxy.findInfoPatientById(id);</span>
+	}
+
+	public List&lt;InfoPatient&gt; findAllInfoPatients() {
+<span class="fc" id="L37">		return webAppProxy.findAllInfoPatients();</span>
+	}
+
+	public InfoPatient saveInfoPatient(InfoPatient patient) {
+<span class="fc" id="L41">		return webAppProxy.saveInfoPatient(patient);</span>
+	}
+
+	public InfoPatient updateInfoPatient(InfoPatient patient) {
+<span class="fc" id="L45">		return webAppProxy.updateInfoPatient(patient);</span>
+	}
+
+	public Optional&lt;InfoPatient&gt; deleteInfoPatientById(UUID id) {
+<span class="fc" id="L49">		return webAppProxy.deleteInfoPatientById(id);</span>
+	}
+
+	public Optional&lt;MedicalRecordPatient&gt; findMedicalRecordPatientById(UUID id) {
+<span class="fc" id="L53">		return webAppProxy.findMedicalRecordPatientById(id);</span>
+	}
+	
+	public List&lt;MedicalRecordPatient&gt; findMedicalRecordsByIdPatient(UUID id) {
+<span class="fc" id="L57">		return webAppProxy.findMedicalRecordsByIdPatient(id);</span>
+	}   
+
+	public List&lt;MedicalRecordPatient&gt; findAllMedicalRecordsPatients() {
+<span class="fc" id="L61">		return webAppProxy.findAllMedicalRecordsPatients();</span>
+	}
+
+	public MedicalRecordPatient saveMedicalRecordPatient(MedicalRecordPatient medicalRecordPatient) {
+<span class="fc" id="L65">		return webAppProxy.saveMedicalRecordPatient(medicalRecordPatient);</span>
+	}
+
+	public MedicalRecordPatient updateMedicalRecordPatient(MedicalRecordPatient medicalRecordPatient) {
+<span class="fc" id="L69">		MedicalRecordPatient historyPatientRecorded = findMedicalRecordPatientById(medicalRecordPatient.getId()).get();</span>
+<span class="fc" id="L70">		medicalRecordPatient.setDate(Calendar.getInstance().getTime()); </span>
+<span class="fc" id="L71">		medicalRecordPatient.setIdPatient(historyPatientRecorded.getIdPatient());</span>
+<span class="fc" id="L72">		return webAppProxy.saveMedicalRecordPatient(medicalRecordPatient);</span>
+	}
+	
+	public Optional&lt;MedicalRecordPatient&gt; deleteMedicalRecordPatientById(UUID id) {
+<span class="fc" id="L76">		return webAppProxy.deleteMedicalRecordPatientById(id);</span>
+	}
+
+	public String findRiskLevelPatient(UUID id) {
+<span class="fc" id="L80">		return webAppProxy.findRiskLevelPatient(id);</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
