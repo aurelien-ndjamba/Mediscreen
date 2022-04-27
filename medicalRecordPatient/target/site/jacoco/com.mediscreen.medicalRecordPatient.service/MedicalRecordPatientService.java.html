@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MedicalRecordPatientService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">medicalRecordPatient</a> &gt; <a href="index.source.html" class="el_package">com.mediscreen.medicalRecordPatient.service</a> &gt; <span class="el_source">MedicalRecordPatientService.java</span></div><h1>MedicalRecordPatientService.java</h1><pre class="source lang-java linenums">package com.mediscreen.medicalRecordPatient.service;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.mediscreen.medicalRecordPatient.exception.BadRequestBodyException;
+import com.mediscreen.medicalRecordPatient.exception.IdMedicalRecordNotFoundException;
+import com.mediscreen.medicalRecordPatient.model.MedicalRecordPatient;
+import com.mediscreen.medicalRecordPatient.repository.MedicalRecordPatientRepository;
+
+import lombok.Getter;
+import lombok.Setter;
+
+/**
+ * Service MedicalRecordPatientService
+ * 
+ * @author Aurelien NDJAMBA
+ * @version 0.0.1
+ */
+@Service
+@Getter
+<span class="fc" id="L27">@Setter</span>
+<span class="fc" id="L28">public class MedicalRecordPatientService {</span>
+
+	@Autowired
+<span class="nc" id="L31">	private MedicalRecordPatientRepository medicalRecordPatientRepository;</span>
+
+	public Optional&lt;MedicalRecordPatient&gt; findById(UUID id) {
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">		if (! medicalRecordPatientRepository.findById(id).isPresent())</span>
+<span class="nc" id="L35">			throw new IdMedicalRecordNotFoundException(&quot;Medical Record Id :&quot; + id + &quot; is not found in database.&quot;);</span>
+<span class="fc" id="L36">		return medicalRecordPatientRepository.findById(id);</span>
+	}
+
+	public List&lt;MedicalRecordPatient&gt; findByIdPatient(UUID id) {
+<span class="fc" id="L40">		return medicalRecordPatientRepository.findByIdPatientOrderByDateDesc(id);</span>
+	}
+
+	public List&lt;MedicalRecordPatient&gt; findAll() {
+<span class="fc" id="L44">		return medicalRecordPatientRepository.findByOrderByDateDesc();</span>
+	}
+
+	public MedicalRecordPatient save(MedicalRecordPatient medicalRecordPatient) {
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">		if (medicalRecordPatient.getId() == null </span>
+<span class="pc bpc" id="L49" title="1 of 2 branches missed.">				|| medicalRecordPatient.getIdPatient() == null </span>
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">				|| medicalRecordPatient.getDate() == null</span>
+<span class="pc bpc" id="L51" title="1 of 2 branches missed.">				|| medicalRecordPatient.getNotes() == null)</span>
+<span class="nc" id="L52">			throw new BadRequestBodyException(&quot;Check @RequestBody MedicalRecordPatient&quot;);</span>
+<span class="fc" id="L53">		medicalRecordPatient.setDate(new Date());</span>
+<span class="fc" id="L54">		return medicalRecordPatientRepository.save(medicalRecordPatient);</span>
+	}
+
+	public Optional&lt;MedicalRecordPatient&gt; deleteById(UUID id) {
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">		if (medicalRecordPatientRepository.findById(id).isEmpty())</span>
+<span class="nc" id="L59">			throw new IdMedicalRecordNotFoundException(&quot;Medical Record Id :&quot; + id + &quot; is not found in database.&quot;);</span>
+<span class="fc" id="L60">		Optional&lt;MedicalRecordPatient&gt; result = findById(id);</span>
+<span class="fc" id="L61">		medicalRecordPatientRepository.deleteById(id);</span>
+<span class="fc" id="L62">		return result;</span>
+	}
+
+} 
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

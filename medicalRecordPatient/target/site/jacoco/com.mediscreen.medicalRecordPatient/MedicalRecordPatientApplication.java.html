@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MedicalRecordPatientApplication.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">medicalRecordPatient</a> &gt; <a href="index.source.html" class="el_package">com.mediscreen.medicalRecordPatient</a> &gt; <span class="el_source">MedicalRecordPatientApplication.java</span></div><h1>MedicalRecordPatientApplication.java</h1><pre class="source lang-java linenums">package com.mediscreen.medicalRecordPatient;
+
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+
+import com.mediscreen.medicalRecordPatient.model.MedicalRecordPatient;
+import com.mediscreen.medicalRecordPatient.repository.MedicalRecordPatientRepository;
+
+/** 
+ * Entity MedicalRecordPatientApplication
+ * 
+ * @author Aurelien NDJAMBA 
+ * @version 0.0.1
+ */
+@SpringBootApplication
+@EnableMongoRepositories
+<span class="fc" id="L22">public class MedicalRecordPatientApplication implements CommandLineRunner{</span>
+	
+	@Autowired
+	MedicalRecordPatientRepository medicalRecordPatientRepository;
+
+	public static void main(String[] args) {
+<span class="nc" id="L28">		SpringApplication.run(MedicalRecordPatientApplication.class, args);</span>
+<span class="nc" id="L29">	}</span>
+ 
+	@Override
+	public void run(String... args) throws Exception { 
+
+//		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;338b4dba-6707-469d-b15e-8ed7a03bb1fd&quot;), &quot;Practitioner's notes/recommendations: Patient states that they are 'feeling terrific' Weight at or below recommended level&quot;));
+//		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;637b3fff-290c-4bf5-ac6e-12b11cf12cc8&quot;), &quot;Practitioner's notes/recommendations: Patient states that they are feeling a great deal of stress at work Patient also complains that their hearing seems Abnormal as of late&quot;));
+//		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;637b3fff-290c-4bf5-ac6e-12b11cf12cc8&quot;), &quot;Practitioner's notes/recommendations: Patient states that they have had a Reaction to medication within last 3 months Patient also complains that their hearing continues to be problematic&quot;));
+//		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;255cbb6e-a28d-449e-b017-0f9d7c3b9564&quot;), &quot;Practitioner's notes/recommendations: Patient states that they are short term Smoker&quot;));
+//		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;255cbb6e-a28d-449e-b017-0f9d7c3b9564&quot;), &quot;Practitioner's notes/recommendations: Patient states that they quit within last year Patient also complains that of Abnormal breathing spells Lab reports Cholesterol LDL high&quot;));
+//		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;ec6e8d79-e612-4c18-ae78-c3384139cb7f&quot;), &quot;Practitioner's notes/recommendations: Patient states that walking up stairs has become difficult Patient also complains that they are having shortness of breath Lab results indicate Antibodies present elevated Reaction to medication&quot;));
+//		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;ec6e8d79-e612-4c18-ae78-c3384139cb7f&quot;), &quot;Practitioner's notes/recommendations: Patient states that they are experiencing back pain when seated for a long time&quot;));
+//		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;ec6e8d79-e612-4c18-ae78-c3384139cb7f&quot;), &quot;Practitioner's notes/recommendations: Patient states that they are a short term Smoker Hemoglobin A1C above recommended level&quot;));
+//		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;ec6e8d79-e612-4c18-ae78-c3384139cb7f&quot;), &quot;Practitioner's notes/recommendations: Patient states that Body Height, Body Weight, Cholesterol, Dizziness and Reaction&quot;));
+
+<span class="fc" id="L44">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;bee3168f-dae3-40b2-8641-86684c384692&quot;), &quot;Le patient déclare qu'il « se sent très bien »&quot;));</span>
+<span class="fc" id="L45">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;bee3168f-dae3-40b2-8641-86684c384692&quot;), &quot;Le patient déclare qu'il se sent fatigué pendant la journée&quot;));</span>
+<span class="fc" id="L46">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;bee3168f-dae3-40b2-8641-86684c384692&quot;), &quot;Le patient déclare qu'il ne se sent pas si fatigué que ça&quot;));</span>
+<span class="fc" id="L47">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;1b75bc5f-647e-463b-92e8-fc3405330eb2&quot;), &quot;Le patient déclare qu'il ressent beaucoup de stress au travail&quot;));</span>
+<span class="fc" id="L48">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;1b75bc5f-647e-463b-92e8-fc3405330eb2&quot;), &quot;Le patient déclare avoir fait une réaction aux médicaments au cours des 3 derniers mois&quot;));</span>
+<span class="fc" id="L49">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;1b75bc5f-647e-463b-92e8-fc3405330eb2&quot;), &quot;Tests de laboratoire indiquant une microalbumine élevée&quot;));</span>
+<span class="fc" id="L50">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;1b75bc5f-647e-463b-92e8-fc3405330eb2&quot;), &quot;Le patient déclare que tout semble aller bien&quot;));</span>
+<span class="fc" id="L51">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;d0ce1967-89be-4e44-ad6f-d9725dfe9e9e&quot;), &quot;Le patient déclare qu'il fume depuis peu&quot;));</span>
+<span class="fc" id="L52">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;d0ce1967-89be-4e44-ad6f-d9725dfe9e9e&quot;), &quot;Tests de laboratoire indiquant une microalbumine élevée&quot;));</span>
+<span class="fc" id="L53">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;d0ce1967-89be-4e44-ad6f-d9725dfe9e9e&quot;), &quot;Le patient déclare qu'il est fumeur et qu'il a cessé de fumer l'année dernière&quot;));</span>
+<span class="fc" id="L54">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;d0ce1967-89be-4e44-ad6f-d9725dfe9e9e&quot;), &quot;Tests de laboratoire indiquant un taux de cholestérol LDL élevé&quot;));</span>
+<span class="fc" id="L55">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;b07476eb-123d-464c-a26f-d0ac76efc4df&quot;), &quot;Le patient déclare qu'il lui est devenu difficile de monter les escaliers&quot;));</span>
+<span class="fc" id="L56">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;b07476eb-123d-464c-a26f-d0ac76efc4df&quot;), &quot;Le patient déclare qu'il a mal au dos lorsqu'il reste assis pendant longtemps&quot;));</span>
+<span class="fc" id="L57">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;b07476eb-123d-464c-a26f-d0ac76efc4df&quot;), &quot;Le patient déclare avoir commencé à fumer depuis peu&quot;));</span>
+<span class="fc" id="L58">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;5671862f-36a1-49c8-8003-0e7cae420bbf&quot;), &quot;Le patient déclare avoir des douleurs au cou occasionnellement&quot;));</span>
+<span class="fc" id="L59">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;5671862f-36a1-49c8-8003-0e7cae420bbf&quot;), &quot;Le patient déclare avoir eu plusieurs épisodes de vertige depuis la dernière visite.&quot;));</span>
+<span class="fc" id="L60">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;5671862f-36a1-49c8-8003-0e7cae420bbf&quot;), &quot;Le patient déclare qu'il souffre encore de douleurs cervicales occasionnelles&quot;));</span>
+<span class="fc" id="L61">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;5671862f-36a1-49c8-8003-0e7cae420bbf&quot;), &quot;Le patient déclare avoir eu plusieurs épisodes de vertige depuis la dernière visite.&quot;));</span>
+<span class="fc" id="L62">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;d4c3df6e-2df3-4c42-a0a9-2c6e662d4372&quot;), &quot;Le patient déclare qu'il se sent bien&quot;));</span>
+<span class="fc" id="L63">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;d4c3df6e-2df3-4c42-a0a9-2c6e662d4372&quot;), &quot;Le patient déclare qu'il se sent bien&quot;));</span>
+<span class="fc" id="L64">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;fcb2b7bc-034f-496c-8ad1-d78d15688391&quot;), &quot;Le patient déclare qu'il se réveille souvent avec une raideur articulaire&quot;));</span>
+<span class="fc" id="L65">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;6ed38280-ce5d-4266-8c55-ace2e70cb3cf&quot;), &quot;Les tests de laboratoire indiquent que les anticorps sont élevés&quot;));</span>
+<span class="fc" id="L66">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;eef94901-e915-4dfe-a06d-49873f8811ad&quot;), &quot;Le patient déclare avoir de la difficulté à se concentrer sur ses devoirs scolaires&quot;));</span>
+<span class="fc" id="L67">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;eef94901-e915-4dfe-a06d-49873f8811ad&quot;), &quot;Le patient déclare qu'il s’impatiente facilement en cas d’attente prolongée&quot;));</span>
+<span class="fc" id="L68">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;eef94901-e915-4dfe-a06d-49873f8811ad&quot;), &quot;Le patient signale qu'il est facilement irrité par des broutilles&quot;));</span>
+<span class="fc" id="L69">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;f6acefba-8fbf-45e7-b93a-faef2c61b218&quot;), &quot;Le patient déclare qu'il se sent bien&quot;));</span>
+<span class="fc" id="L70">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;f6acefba-8fbf-45e7-b93a-faef2c61b218&quot;), &quot;Le patient déclare qu'il se sent bien&quot;));</span>
+<span class="fc" id="L71">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;f6acefba-8fbf-45e7-b93a-faef2c61b218&quot;), &quot;Le patient déclare qu'il se sent bien&quot;));</span>
+<span class="fc" id="L72">		medicalRecordPatientRepository.save(new MedicalRecordPatient(UUID.fromString(&quot;f6acefba-8fbf-45e7-b93a-faef2c61b218&quot;), &quot;Le patient déclare qu'il se sent bien&quot;));</span>
+	
+<span class="fc" id="L74">	}   </span>
+  
+}  
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
