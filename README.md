@@ -3,10 +3,10 @@
 ![uses-spring-boot (2)](https://user-images.githubusercontent.com/66125882/150993441-590505b7-fd53-44df-9ac5-695d0fb59754.svg)
 ![uses-eclipse-ide (1)](https://user-images.githubusercontent.com/66125882/150993531-3f8d450c-0399-4c9f-920c-4296d0473f2d.svg)
 ![use-maven-3](https://user-images.githubusercontent.com/66125882/165568415-f2afa0b6-f3ac-4988-a89a-d9d779276c57.svg)
-![use-docker](https://user-images.githubusercontent.com/66125882/165568249-b3ecabfb-f613-4822-b873-d8f2d0d67ce7.svg)
 ![use-html-5](https://user-images.githubusercontent.com/66125882/165568394-75ae0be2-3daf-494a-a36b-bb8c661bc155.svg)
 ![use-css-3](https://user-images.githubusercontent.com/66125882/165568363-3c74f098-a315-423d-9473-65d5e16982e4.svg)
 ![use-bootstrap](https://user-images.githubusercontent.com/66125882/165568330-7d208098-b150-4085-b8bb-47274021a1b2.svg)
+![use-docker](https://user-images.githubusercontent.com/66125882/165568249-b3ecabfb-f613-4822-b873-d8f2d0d67ce7.svg)
 
 
 # Mediscreen
