@@ -4,7 +4,7 @@
 ![uses-eclipse-ide (1)](https://user-images.githubusercontent.com/66125882/150993531-3f8d450c-0399-4c9f-920c-4296d0473f2d.svg)
 
 # Mediscreen
-<img src="webAppPatient/src/main/resources/static/image/pmb.PNG" alt="Mediscreen"/>
+![pmb](https://user-images.githubusercontent.com/66125882/165566469-0f1590a9-170d-4ae6-95cd-a5c228aab78f.PNG)
 
 Web application to save patient information, consult it, modify it if necessary. Then add the patients' medical records and finally obtain the patients' level of diabetes risk based on criteria determined by medical experts.
 
@@ -61,4 +61,12 @@ Web application to save patient information, consult it, modify it if necessary.
 - Aurélien NDJAMBA
 
 ## License
+Eclipse Public License 1.0: JUnit
 
+Eclipse Public License v2.0: JUnit Jupiter (Aggregator), JUnit Jupiter API, JUnit Jupiter Engine, JUnit Jupiter Params, JUnit Platform Commons, JUnit Platform Engine API
+
+Eclipse Public License v1.0: JaCoCo :: Agent, JaCoCo :: Core, JaCoCo :: Maven Plugin, JaCoCo :: Report
+
+The MIT License: Project Lombok, mockito-core, mockito-junit-jupiter
+
+Apache License, Version 2.0: Apache Commons Codec, Apache Commons Lang, Apache Log4j API, Apache Log4j to SLF4J Adapter, AssertJ fluent assertions, Byte Buddy (without dependencies), Byte Buddy agent, JSR 354 (Money and Currency API), Objenesis, SnakeYAML, Spring AOP, Spring Beans, Spring Commons Logging Bridge, Spring Context, Spring Core, Spring Expression Language (SpEL), Spring TestContext Framework, Spring Web, Spring Web MVC, spring-boot, spring-boot-autoconfigure, spring-boot-devtools, spring-boot-starter, spring-boot-starter-json, spring-boot-starter-logging, spring-boot-starter-test, spring-boot-starter-tomcat, spring-boot-starter-web, spring-boot-test, spring-boot-test-autoconfigure, tomcat-embed-core, tomcat-embed-el, tomcat-embed-websocket, tourguide
